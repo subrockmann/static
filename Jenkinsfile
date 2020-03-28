@@ -7,7 +7,7 @@ pipeline {
 
                     // def identity=awsIdentity();//Log AWS credentials
 
-                    // Upload files from working directory 'dist' in your project workspace
+                    // Upload files in your project workspace
                     s3Upload(bucket:"subrockmann-ud-jenkins", file:'index.html', path:'index.html');
                 }
             }
