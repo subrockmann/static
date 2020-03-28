@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withAWS(region:'eu-central-1',credentials:'yourIDfromStep2') {
+                withAWS(region:'eu-central-1',credentials:'Jenkins') {
 
                     // def identity=awsIdentity();//Log AWS credentials
 
                     // Upload files from working directory 'dist' in your project workspace
-                    s3Upload(bucket:"subrockmann-ud-jenkins", file:'index.html', path:'index.html')
+                    s3Upload(bucket:"subrockmann-ud-jenkins", file:'index.html', path:'index.html');
                 }
             }
         }
