@@ -1,14 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Lint HTML'){
+            steps{
+                sh "tidy -q -e *.html"
+            }
+        }
+        stage('Upload to AWS') {
             steps {
                 withAWS(region:'eu-central-1',credentials:'Jenkins') {
 
                     // def identity=awsIdentity();//Log AWS credentials
 
                     // Upload files in your project workspace
-                    s3Upload(bucket:"subrockmann-ud-jenkins", file:'index.html', path:'index.html');
+                    //ncludePathPattern:'**/*'
+                    //s3Upload(bucket:"subrockmann-ud-jenkins", file:'index.html', path:'index.html');
                 }
             }
         }
